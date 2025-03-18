@@ -1,11 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from "../assets/images/logo/logo.png";
+import { AuthContext } from '../contexts/AuthProvider';
 
 const NavItems = () => {
     const [menuToggle, setMenuToggle] = useState(false);
     const [socialToggle, setSocialToggle] = useState(false);
     const [headerFixed, setHeaderFixed] = useState(false);
+
+    //authinfo
+    const {user} = useContext(AuthContext)
+    console.log(user)
 
     useEffect(() => {
         const handleScroll = () => {

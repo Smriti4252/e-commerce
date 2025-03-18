@@ -59,10 +59,7 @@ const ItemList = [
         text: 'Shop',
         link: '/shop',
     },
-    {
-        text: 'Blog',
-        link: '/blog',
-    },
+
     {
         text: 'About',
         link: '/about',

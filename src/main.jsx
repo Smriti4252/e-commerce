@@ -25,6 +25,10 @@ import SingleProduct from './shop/SingleProduct.jsx';
 import CartPage from './shop/CartPage.jsx';
 import About from './about/About.jsx';
 import Contact from './contactPage/Contact.jsx';
+import AuthProvider from './contexts/AuthProvider.jsx';
+import PrivateRoute from './PrivateRoute/PrivateRoute.jsx';
+import Login from './components/Login.jsx';
+import Signup from './components/Signup.jsx';
 
 
 const router = createBrowserRouter([
@@ -36,18 +40,31 @@ const router = createBrowserRouter([
       { path: "/blog", element: <Blog /> },
       { path: "/shop", element: <Shop /> },
       { path: "shop/:id", element: <SingleProduct /> },
-      { path: "/cart-page", element: <CartPage /> },
+      {
+        path: "/cart-page",
+        element: <PrivateRoute><CartPage /></PrivateRoute>
+      },
       { path: "/about", element: <About /> },
       { path: "/contact", element: <Contact /> },
 
     ],
+  },
+  {
+    path: "login",
+    element: <Login />
+  },
+  {
+    path: "sign-up",
+    element: <Signup />
   },
 
 ],
 );
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+  <AuthProvider>
+    <RouterProvider router={router} />
+  </AuthProvider>
 
-  <RouterProvider router={router} />
 
 )
